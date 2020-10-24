@@ -10,17 +10,17 @@ New Instructions
 
 2 additional modes added for clip launch, and scene mode changes keys:
 
-S1 Instrument Mode
-S2 Clip Launch Mode Tracks 1-4
-S3 Clip Launch Mode Tracks 5-8
-S4 Clip Launch Horizontal Slots 1-4 (only works on Banks A and B - tracks 1-8).
-S5 Clip Launch Horizontal Slots 5-8 (only works on Banks A and B - tracks 1-8).
-S6 Scene Mode
+- S1 Instrument Mode
+- S2 Clip Launch Mode Tracks 1-4
+- S3 Clip Launch Mode Tracks 5-8
+- S4 Clip Launch Horizontal Slots 1-4 (only works on Banks A and B - tracks 1-8).
+- S5 Clip Launch Horizontal Slots 5-8 (only works on Banks A and B - tracks 1-8).
+- S6 Scene Mode
 
 Additional Clip control functionality:
 
-Shift (DAW Enter key in the centre of cursor keys beside mod wheel) and click clip in any clip mode to stop that clip/track.
-UpShift (DAW Up arrow) and click clip in any clip mode to DELETE that clip
+- Shift (DAW Enter key in the centre of cursor keys beside mod wheel) and click clip in any clip mode to stop that clip/track.
+- UpShift (DAW Up arrow) and click clip in any clip mode to DELETE that clip
 
 Areas for improvement:
 - get rid of hacks and redundant commented out sections
