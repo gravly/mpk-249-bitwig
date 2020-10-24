@@ -1,0 +1,52 @@
+New Instructions
+
+S1 Instrument Mode
+S2 Clip Launch Mode Tracks 1-4
+S3 Clip Launch Mode Tracks 5-8
+S4 Clip Launch Horizontal Slots 1-4 (only works on Banks A and B - tracks 1-8).
+S5 Clip Launch Horizontal Slots 5-8 (only works on Banks A and B - tracks 1-8).
+S6 Scene Mode
+
+Shift (DAW Enter key in the centre of cursor keys beside mod wheel) and click clip in any clip mode to stop that clip/track.
+UpShift (DAW Up arrow) and click clip in any clip mode to DELETE that clip
+
+
+
+
+
+PROGRAMMING NOTES
+
+Bank A- Pad 1 is C2 = midi 36
+Bank B, C, D just keep ascending from there.
+
+'Bank' in MPK2_PadClipLaunch.js refers to whether tracks 1-4 or 5-8 are selected?
+
+At the moment it does up to 8 tracks and up to 16 slots.
+Could make it up to 16 tracks (Bank A, B, C, D) and up to 8 slots.
+
+Tracks are numbered 0, 1, 2, 3 (Bank A)
+		    4, 5, 6, 7 (Bank B)
+
+EXISTING
+Say slot is 3(4) and track is 2(3)
+newslot is then 0, Pad is then 2+0 = 2
+
+Say slot is 2(3) and track is 1(2)
+newslot is then 1, Pad is then 1+(1*4) = 5
+
+
+WE WANT
+
+newslot = Math.abs(track -3)
+Pad = slot + (newslot * 4)
+
+Say slot is 3(4) and track is 2(3)
+newslot is then 1, Pad is then 3+(1*4) = 7
+
+Say slot is 2(3) and track is 1(2)
+newslot is then 2, Pad is then 2+(2*4) = 10
+
+if track <8 then -7 from track.
+If track is 6(7) and slot is 1(2)
+newslot is then 1, Pad is then 5
+
