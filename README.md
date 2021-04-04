@@ -1,4 +1,8 @@
-***************Use preset 6 Bitwig*******************
+Use preset 6 Bitwig on your MPK249 controller
+
+The main impulse to create this was to have a clip launcher where the pads match the arranger view layout
+where the slots for one track run horizontally (rather than vertically), so I don't need to keep bending my brain sideways
+on the fly.  
 
 New Instructions
 
