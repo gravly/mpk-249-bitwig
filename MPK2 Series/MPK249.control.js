@@ -8,7 +8,6 @@ load("MPK2_PadClipLaunch.js");
 load("MPK2_PadClipLaunchHORIZONTAL.js");		//added by Gray
 load("MPK2_PadSceneLaunch.js");
 
-
 host.defineController("Akai", "MPK249", "1.0.8", "2b3dbd60-9522-11e3-a5e2-0800200c9a66");
 host.defineMidiPorts(2, 2);
 
@@ -43,6 +42,7 @@ InitNoteInputs("MPK249")
 	cursorTrack = host.createCursorTrack(2, 0);
 	cursorDevice = host.createCursorDevice();
 
+
     primaryDevice = cursorTrack.getPrimaryDevice();
     primaryDevice.addNameObserver(11, "", cursorTrackInstrumentNameObs());
 
@@ -76,7 +76,7 @@ InitNoteInputs("MPK249")
         clipLauncherSlots.addIsRecordingObserver(clipRecordObs(p));
         clipLauncherSlots.setIndication(true);
     }
-    println("Akai Profressional MPK249 Bitwig Controller Script");
+    println("Akai Professional MPK249 Bitwig Controller Script modified by Graham Evans");
 }
 
 

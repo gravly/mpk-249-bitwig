@@ -46,11 +46,13 @@ PadInstrument.cursorTrackColorObs = function(red,green,blue) {
 
 PadInstrument.cursorTrackInstrumentNameObs = function(track,text) {
     PadMode.prototype.cursorTrackInstrumentNameObs(track,text);
+
     usingDrumMachine ? PadInstrument.lightPadsForDrumRack(CursorTrackColor) : lightAllPads(CursorTrackColor,"Off");
 }
 
 PadInstrument.lightPadsForDrumRack = function(color) {
     padIdent = minimumPadOff;
+//    host.showPopupNotification(uint7ToHex(getLSB(padIdent)));  //GE ADDED FOR TESTING
     var MidiOut = "F0 47 00 " + uint7ToHex(PRODUCT_ID) + " 31 00 43 40 " + uint7ToHex(getMSB(padIdent)) + " " + uint7ToHex(getLSB(padIdent));
     for (var x = 36; x < 100; x++ ) {
         if (drumKeys[x] == false) {
@@ -62,6 +64,7 @@ PadInstrument.lightPadsForDrumRack = function(color) {
     }
     MidiOut+= " F7";
     host.getMidiOutPort(1).sendSysex(MidiOut);
+//    println(MidiOut);
 }
 
 PadInstrument.cursorTrackpitchObs = function(key,name) {

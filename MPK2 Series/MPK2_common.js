@@ -393,7 +393,7 @@ function onMidi(status, data1, data2)
                     println("just set active to " + activeClipBank);
                     setActivePadMode(PadClipLauncher);
                 }
-                else if(data1 - S1 == 2) {
+                if(data1 - S1 == 2) {
                     activeClipBank = ClipBanks.Bank_B;
                     println("just set active to " + activeClipBank);
                     setActivePadMode(PadClipLauncher);
@@ -403,20 +403,21 @@ function onMidi(status, data1, data2)
                     println("just set active to " + activeClipBank);
                     setActivePadMode(PadClipLauncherH);
                 }
-                else if(data1 - S1 == 4) {
+                if(data1 - S1 == 4) {
                     activeClipBank = ClipBanks.Bank_B;
                     println("just set active to " + activeClipBank);
                     setActivePadMode(PadClipLauncherH);
                 }
-                else if(data1 - S1 == 5) {
+                if(data1 - S1 == 5) {
                     setActivePadMode(PadSceneLauncher);
                 }
-                else if (data1 - S1 == 7) {
+                if (data1 - S1 == 6) {
                     displayHelpText = !displayHelpText;
                     displayHelpText ? host.showPopupNotification("Popup Notifications On") : host.showPopupNotification("Popup Notifications Off");
-
-                    
                 }
+                if (data1 - S1 == 7) {
+                    transport.toggleLauncherOverdub();
+	        }
             }
         }
         
@@ -605,17 +606,20 @@ PadMode.prototype.init = function() {
 PadMode.prototype.cursorTrackColorObs = function(red,green,blue) {
     CursorTrackColor = bitwigColorToPadColor([red.toFixed(4),green.toFixed(4),blue.toFixed(4)]);
 }
+
 PadMode.prototype.cursorTrackInstrumentNameObs = function(text) {
-    usingDrumMachine = (text == "DrumMachine");
+    usingDrumMachine = (text == "DrmMachine");
     if (usingDrumMachine == true) {
         for (var x = 0; x < drumKeys.length; x++) {
-            drumKeys[x] = false;
-        }
+            drumKeys[x] = true; //(was false)
+            //println(PadMode.prototype.cursorTrackpitchObs);
+            //need to fill array from 36 to 100 with status for each drumpad
+            }
     }
 }
 
 PadMode.prototype.cursorTrackpitchObs = function (key, name) {
-    drumKeys[key] = true;
+    drumKeys[key] = true;    
 }
 
 PadMode.prototype.clipContentObs = function(track,slot,hasContent) {
@@ -638,13 +642,8 @@ function padSceneData() {
     this.recording = false;
 }
 
-
-
 function MPK225ControlsMidi(status, data1, data2) {
     if (status == PadStatus) {
         return data2;
     }
 }
-
-
-
